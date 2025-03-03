@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Expense {
+  id       Int      @id @default(autoincrement())
+  user     String
+  category String
+  type String
+  amount   Float
+    date     DateTime @default(now())
+}
+
+
+model StoryChat {
+  id       Int      @id @default(autoincrement())
+  user     String
+  msg      Text   
+  date     DateTime @default(now()) // Garante que a data de criação seja armazenada automaticamente.
+}
+
