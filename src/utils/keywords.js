@@ -1,5 +1,3 @@
-// utils/keywords.js
-
 // Saudações
 const greetings = [
     'boa noite', 'olá', 'oi', 'salve', 'bom dia', 'boa tarde',
@@ -28,7 +26,6 @@ const informationKeywords = [
 ];
 
 
-// Exportar todas as palavras-chave
 module.exports = {
     greetings,
     helpKeywords,

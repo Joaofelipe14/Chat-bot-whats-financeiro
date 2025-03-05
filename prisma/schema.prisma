@@ -7,20 +7,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Expense {
-  id       Int      @id @default(autoincrement())
-  user     String
-  category String
-  type String
-  amount   Float
-    date     DateTime @default(now())
+model Usuario {
+  id         Int       @id @default(autoincrement())  
+  nome       String    
+  celular    String    @unique 
+  criadoEm   DateTime  @default(now())      
+  expiraEm   DateTime  // Calculado com base no plano escolhido
+  mensagens  Mensagem[]
+  transacoes Transacao[]
+}
+
+model Mensagem {
+  id        Int       @id @default(autoincrement())
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
+  conteudo  String  
+  criadoEm  DateTime @default(now())
+}
+
+model Plano {
+  id       Int       @id @default(autoincrement())
+  nome     String  
+  duracao  Int      
+}
+
+model Transacao {
+  id         Int       @id @default(autoincrement()) 
+  codigo     String    @unique 
+  usuario    Usuario   @relation(fields: [usuarioId], references: [id])
+  usuarioId  Int
+  valor      Float  
+  tipo       TipoTransacao  
+  categoria  String
+  criadoEm   DateTime @default(now())
 }
 
 
-model StoryChat {
-  id       Int      @id @default(autoincrement())
-  user     String
-  msg      Text   
-  date     DateTime @default(now()) // Garante que a data de criação seja armazenada automaticamente.
+enum TipoTransacao {
+  ENTRADA
+  SAIDA
 }
-

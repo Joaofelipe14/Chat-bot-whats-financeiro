@@ -1,35 +1,28 @@
 // chartGenerator.js
 const { ChartJSNodeCanvas } = require('chartjs-node-canvas');
-const path = require('path');
-const fs = require('fs');
-const ChartDataLabels = require('chartjs-plugin-datalabels');
 
 async function generatePieChart(data) {
   try {
-    console.log('auqi');
-    const categories = Array.from(new Set(data.map(item => item.category)));
-
-    const values = categories.map(category => {
+    const categories = Array.from(new Set(data.map(item => item.categoria)));
+    const values = categories.map(categoria => {
       return data
-        .filter(item => item.category === category)
-        .reduce((sum, exp) => sum + exp.amount, 0);
+        .filter(item => item.categoria == categoria)
+        .reduce((sum, exp) => sum + Number(exp.valor), 0);
     });
+
 
     const total = values.reduce((sum, val) => sum + val, 0);
 
     const percentages = values.map(value => {
       return total === 0 ? "0%" : `${((value / total) * 100).toFixed(2)}%`;
     });
-    console.log(percentages);
-    console.log(total);
-
-    // Criando rótulos com porcentagens
-    const labelsWithPercentages = categories.map((category, index) => {
-      return `${category}: ${percentages[index]}`;  // Exibindo a porcentagem no label
+    
+    const labelsWithPercentages = categories.map((categoria, index) => {
+      return `${categoria}: ${percentages[index]}`;  
     });
 
-    const width = 800;
-    const height = 600;
+    const width = 600;
+    const height = 400;
 
     const chartJSNodeCanvas = new ChartJSNodeCanvas({
       width,
@@ -37,10 +30,13 @@ async function generatePieChart(data) {
       backgroundColor: 'white',
     });
 
+    console.log(labelsWithPercentages);
+    console.log(values);
+
     const configuration = {
       type: 'pie',
       data: {
-        labels: labelsWithPercentages,  // Usando labels com porcentagens
+        labels: labelsWithPercentages, 
         datasets: [
           {
             data: values,
