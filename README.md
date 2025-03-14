@@ -94,34 +94,7 @@ geração de relátorios [ ]
 2. Banco de dados PostgreSQL ou MySQL configurado.
 3. Instalar o **WhatsApp Web** (no modo de desenvolvimento).
 
-### Passos para Instalar:
+### Preview
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/usuario/controle-financeiro-whatsapp.git
-
-src/
-│
-├── config/                # Arquivos de configuração
-│   ├── googleAI.js        # Configurações do Google Generative AI
-│   ├── whatsapp.js        # Configuração do cliente WhatsApp
-│   └── prisma.js          # Configuração do Prisma
-│
-├── controllers/           # Lógica de controle (respostas, processamento de mensagens)
-│   ├── messageController.js
-│   └── responseController.js
-│
-├── services/              # Serviços e interações externas (Google AI, Banco de Dados)
-│   ├── googleAIService.js
-│   └── expenseService.js
-│
-├── models/                # Definições de dados ou modelos de banco
-│   └── expenseModel.js    # Modelos do Prisma, por exemplo
-│
-├── utils/                 # Funções utilitárias
-│   └── randomResponse.js  # Função para gerar respostas aleatórias
-│
-└── index.js               # Arquivo principal de inicialização
-
-
-npx prisma migrate dev --name initial
+- **Relatorios**: ![Imagem 1](https://raw.githubusercontent.com/Joaofelipe14/Chat-bot-whats-financeiro/refs/heads/main/src/assets/2.jpeg)
+- **Relatorios**: ![Imagem 1](https://raw.githubusercontent.com/Joaofelipe14/Chat-bot-whats-financeiro/refs/heads/main/src/assets/1.jpeg)
