@@ -5,8 +5,8 @@ const responses = {
         "Não ficou claro. Você pode reformular? 🤷‍♂️"
     ],
     registrar_gasto: [
-        "Gasto de *R${valor}* em '*{categoria}*' registrado com sucesso! 💸",
-        "Anotei! *R${valor}* gastos em '*{categoria}*'. 📝",
+        "Gasto de *R${valor}* em *{categoria}* registrado com sucesso! 💸",
+        "Anotei! *R${valor}* gastos em *{categoria}*. 📝",
         "Beleza! Seu gasto de *R${valor}* na categoria '*{categoria}*' foi salvo. ✅"
     ],
     relatorio: [

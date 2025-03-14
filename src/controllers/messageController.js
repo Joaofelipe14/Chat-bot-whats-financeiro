@@ -9,6 +9,7 @@ async function handleUserMessage(userNumber, message, historyMessage) {
     // /*Responder mensagem setadas*/
     // const isMessageHandledBySet = await messageSet(userNumber, lowerCaseMessage);
 
+    // console.log(isMessageHandledBySet)
     // if (isMessageHandledBySet) {
     //     return;
     // }

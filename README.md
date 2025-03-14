@@ -2,11 +2,12 @@
 
 Este projeto visa criar um sistema de controle financeiro pessoal utilizando o **WhatsApp Web**, **Node.js** e **Prisma** para gerenciamento de dados. O objetivo é permitir que o usuário registre suas receitas e despesas diretamente pelo WhatsApp, com categorias personalizáveis, geração de gráficos financeiros e sugestões de economia ou investimentos quando houver saldo positivo.
 
-Detalhes de transação armazenar na tabela mesagem [ ]
+Detalhes de transação armazenar na tabela mesagem [X]
 lista detalhes de transação [ ]
 Apagar transação pelo codigo [ ]
 Ajustar gráficos [ ]
 gráfico semanal [ ]
+Melhorar respostar do bot [ ]
 Setar o Tutorial do app :
 Cadastro [ ]
 Detalhes da transação [ ]
@@ -121,3 +122,6 @@ src/
 │   └── randomResponse.js  # Função para gerar respostas aleatórias
 │
 └── index.js               # Arquivo principal de inicialização
+
+
+npx prisma migrate dev --name initial

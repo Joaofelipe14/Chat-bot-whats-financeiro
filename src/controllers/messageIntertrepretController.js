@@ -1,17 +1,16 @@
 const client = require('../config/whatsapp');
 const { MessageMedia } = require('whatsapp-web.js');
 const { interpretMessageClassific } = require('../services/ClassifiqueMessageService');
-const { processActionRegistrar, processActionRelatorio } = require('../services/processMessageIaService');
+const { processActionRegistrar, processActionRelatorio ,processActionDetalhes} = require('../services/processMessageIaService');
 
-const transection = require('./TransectionController')
+const transection = require('./transectionController')
+const detail = require('./detailTransectionController')
+
 
 async function interpretMessageAndResponse(userNumber, message, historyMessage) {
 
     const classificacaoMsg = await interpretMessageClassific(message, historyMessage);
-
-
     console.log(classificacaoMsg)
-
 
     let interpretation = {}
 
@@ -23,7 +22,7 @@ async function interpretMessageAndResponse(userNumber, message, historyMessage) 
             interpretation = await processActionRegistrar(message, historyMessage);
 
             if(interpretation.status=="sucess"){
-                const retornoRegistrar = await transection.registerExpense(userNumber, interpretation);
+                const retornoRegistrar = await transection.registerExpense(userNumber,message, interpretation);
              
                 client.sendMessage(userNumber, retornoRegistrar.message);
             }
@@ -54,6 +53,25 @@ async function interpretMessageAndResponse(userNumber, message, historyMessage) 
             }
 
             break;
+
+        case "detalhes":
+            console.log('caiu nos detalhes ')
+
+             interpretation = await processActionDetalhes(message, historyMessage);
+
+            console.log(interpretation)
+            if(interpretation.status=="sucess"){
+                const retornoRegistrar = await detail.getMensagemByCategoria(userNumber, interpretation);
+             
+                client.sendMessage(userNumber, retornoRegistrar.message);
+            }
+
+            if(interpretation.status=="erro"){
+                client.sendMessage(userNumber, interpretation.message);
+            }
+            
+
+            break
 
         case "erro":
         case "ajuda":

@@ -9,20 +9,12 @@ datasource db {
 
 model Usuario {
   id         Int       @id @default(autoincrement())  
-  nome       String    
+  nome       String  
   celular    String    @unique 
   criadoEm   DateTime  @default(now())      
   expiraEm   DateTime  // Calculado com base no plano escolhido
   mensagens  Mensagem[]
   transacoes Transacao[]
-}
-
-model Mensagem {
-  id        Int       @id @default(autoincrement())
-  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
-  usuarioId Int
-  conteudo  String  
-  criadoEm  DateTime @default(now())
 }
 
 model Plano {
@@ -40,8 +32,22 @@ model Transacao {
   tipo       TipoTransacao  
   categoria  String
   criadoEm   DateTime @default(now())
+  mensagens  Mensagem[]
+
+  
 }
 
+model Mensagem {
+  id          Int       @id @default(autoincrement())
+  usuario     Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId   Int
+  conteudo    String  
+  transacao    Transacao   @relation(fields: [transacaoId], references: [id])
+  transacaoId  Int
+  criadoEm    DateTime @default(now())
+
+
+}
 
 enum TipoTransacao {
   ENTRADA
