@@ -95,6 +95,5 @@ geração de relátorios [ ]
 3. Instalar o **WhatsApp Web** (no modo de desenvolvimento).
 
 ### Preview
-
-- **Relatorios**: ![Imagem 1](https://raw.githubusercontent.com/Joaofelipe14/Chat-bot-whats-financeiro/refs/heads/main/src/assets/2.jpeg)
-- **Relatorios**: ![Imagem 1](https://raw.githubusercontent.com/Joaofelipe14/Chat-bot-whats-financeiro/refs/heads/main/src/assets/1.jpeg)
+![Imagem 1](https://raw.githubusercontent.com/Joaofelipe14/Chat-bot-whats-financeiro/refs/heads/main/src/assets/2.jpeg)
+![Imagem 1](https://raw.githubusercontent.com/Joaofelipe14/Chat-bot-whats-financeiro/refs/heads/main/src/assets/1.jpeg)
